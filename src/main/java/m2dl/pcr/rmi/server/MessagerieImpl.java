@@ -23,13 +23,13 @@ public class MessagerieImpl extends UnicastRemoteObject implements IMessagerie {
     public void sendMessage(Message message) {
         System.out.println("Message reçu ! "+ message);
         listDesMessages.add(message);
-        notifyNewMessage();
+        notifyNewMessage(message);
     }
 
-    private void notifyNewMessage() {
+    private void notifyNewMessage(Message message) {
         for(IClient cli : listClient) {
             try {
-                cli.notifyNewMessage();
+                cli.notifyNewMessage(message);
             } catch (RemoteException e) {
                 System.err.println("Impossible de notifier le client");
             }

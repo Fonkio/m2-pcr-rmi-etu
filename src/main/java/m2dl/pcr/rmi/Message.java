@@ -39,10 +39,6 @@ public class Message implements Serializable {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "expediteur='" + expediteur + '\'' +
-                ", message='" + message + '\'' +
-                ", timeMillis=" + timeMillis +
-                '}';
+        return "<" + expediteur + "> " + message;
     }
 }

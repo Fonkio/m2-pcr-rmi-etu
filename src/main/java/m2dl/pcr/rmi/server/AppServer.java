@@ -16,7 +16,7 @@ public class AppServer {
             registry = LocateRegistry.createRegistry(1099);
 
             IMessagerie mssgrie = new MessagerieImpl();
-            registry.rebind("Messagerie", mssgrie);
+            registry.rebind("messagerie", mssgrie);
 
             System.out.println("Serveur de messagerie prêt !");
         } catch (Exception e) {

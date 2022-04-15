@@ -1,5 +1,6 @@
 package m2dl.pcr.rmi.client;
 
+import m2dl.pcr.rmi.Message;
 import m2dl.pcr.rmi.interfaces.IClient;
 
 import java.rmi.RemoteException;
@@ -11,7 +12,7 @@ public class ClientImpl extends UnicastRemoteObject implements IClient {
     }
 
     @Override
-    public void notifyNewMessage() throws RemoteException {
-        AppClient.printMessages();
+    public void notifyNewMessage(Message message) throws RemoteException {
+        System.out.println(message);
     }
 }

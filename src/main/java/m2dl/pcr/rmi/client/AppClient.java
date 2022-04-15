@@ -52,7 +52,6 @@ public class AppClient {
             if (messageList.isEmpty()) {
                 System.out.println("Aucun message");
             } else {
-                System.out.println("Liste des messages");
                 for(Message message : messageList) {
                     System.out.println(message);
                 }
