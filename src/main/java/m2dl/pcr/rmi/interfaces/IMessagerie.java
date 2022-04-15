@@ -7,11 +7,11 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 public interface IMessagerie extends Remote {
-    void sendMessage (Message message) throws RemoteException;
+    void sendMessage (Message message, String channel) throws RemoteException;
 
-    List<Message> getMessages() throws RemoteException;
+    List<Message> getMessages(String channel) throws RemoteException;
 
-    void connect(IClient id) throws RemoteException;
+    void connect(IClient id, String channel) throws RemoteException;
 
-    void disconnect(IClient id) throws RemoteException;
+    void disconnect(IClient id, String channel) throws RemoteException;
 }

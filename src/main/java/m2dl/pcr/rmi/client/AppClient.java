@@ -24,31 +24,36 @@ public class AppClient {
             messagerie = (IMessagerie) registry.lookup("messagerie");
 
             IClient client = new ClientImpl();
-            messagerie.connect(client);
 
             Scanner scanner = new Scanner(System.in);
             System.out.println("Entrez votre nom :");
-            String id = scanner.nextLine();
+            String username = scanner.nextLine();
+            System.out.println("Entrez le nom du channel :");
+            String channel = scanner.nextLine();
 
-            registry.rebind(id, client);
-            printMessages();
+            messagerie.connect(client, channel);
+
+            registry.rebind(username, client);
+            printMessages(channel);
             String messageStr = scanner.nextLine();
             while (!messageStr.equals("exit")) {
-                Message messageToSend = new Message(id, messageStr);
-                messagerie.sendMessage(messageToSend);
+                Message messageToSend = new Message(username, messageStr);
+                messagerie.sendMessage(messageToSend, channel);
                 messageStr = scanner.nextLine();
             }
-            messagerie.disconnect(client);
+            messagerie.disconnect(client, channel);
+            System.exit(0);
+
         } catch (Exception e) {
             System.err.println("Client exception: " + e);
             e.printStackTrace();
         }
     }
 
-    public static void printMessages() {
+    public static void printMessages(String channel) {
         List<Message> messageList;
         try {
-            messageList = messagerie.getMessages();
+            messageList = messagerie.getMessages(channel);
             if (messageList.isEmpty()) {
                 System.out.println("Aucun message");
             } else {

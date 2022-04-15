@@ -6,6 +6,7 @@ public class Message implements Serializable {
     private String expediteur;
     private String message;
     private Long timeMillis;
+    private String channel;
 
     public String getExpediteur() {
         return expediteur;
